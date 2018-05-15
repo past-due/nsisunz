@@ -10,3 +10,5 @@ add_subdirectory(Source)
 file(GLOB INFO_FILES "*.txt" "*.md")
 INSTALL(FILES ${INFO_FILES}
 		COMPONENT "Info" DESTINATION ".")
+INSTALL(DIRECTORY "Examples"
+		COMPONENT "Examples" DESTINATION "Examples")
