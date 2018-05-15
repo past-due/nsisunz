@@ -354,6 +354,9 @@ int do_extract_currentfile(uf,popt_extract_without_path,popt_overwrite,password)
         else
             write_filename = filename_withoutpath;
 
+        while (write_filename[0]=='/' || write_filename[0]=='.')
+            write_filename++;
+
         err = unzOpenCurrentFilePassword(uf,password);
         if (err!=UNZ_OK)
         {
