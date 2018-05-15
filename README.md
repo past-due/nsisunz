@@ -1,4 +1,4 @@
-# nsisunz
+# nsisunz [![License: zlib](https://img.shields.io/badge/License-zlib-blue.svg)](https://en.wikipedia.org/wiki/Zlib_License) [![NSIS: 3.0+](https://img.shields.io/badge/NSIS-3.0%2B-orange.svg)](https://en.wikipedia.org/wiki/Nullsoft_Scriptable_Install_System)
 
 **nsisunz** is a [NSIS](https://en.wikipedia.org/wiki/Nullsoft_Scriptable_Install_System) plugin which allows you to extract files from ZIP archives.
 
@@ -10,7 +10,7 @@
 - Further improvements by past-due, 2018+
   - Update NSIS plugin API to 3.0
   - Update bundled [zlib](https://zlib.net) to [1.2.11](https://zlib.net/ChangeLog.txt)
-  - Update bundled Minizip to 1.1
+  - Update bundled Minizip to 1.1-5
   - [CMake](https://cmake.org) build support (builds both ANSI and Unicode DLLs)
 
 ## Credits:
