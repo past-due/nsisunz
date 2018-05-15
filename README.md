@@ -13,6 +13,32 @@
   - Update bundled Minizip to 1.1-5
   - [CMake](https://cmake.org) build support (builds both ANSI and Unicode DLLs)
 
+## Examples:
+
+> For more, see the `Examples/` directory.
+
+#### UnzipToLog
+
+```NSIS
+InitPluginsDir
+; Call plug-in. Push filename to ZIP first, and the dest. folder last.
+nsisunz::UnzipToLog "$PLUGINSDIR\myzipfile.zip" "$INSTDIR"
+
+; Always check result on stack
+Pop $0
+StrCmp $0 "success" ok
+DetailPrint "$0" ;print error message to log
+ok:
+```
+
+#### Unzip
+
+```NSIS
+; You can also use the "Unzip" function if you don't want to use the log.
+; It is a lot quicker, and is preferred for large ZIP archives.
+nsisunz::Unzip "$PLUGINSDIR\myzipfile.zip" "$INSTDIR"
+```
+
 ## Credits:
 - Based on code in NSIS Zip2Exe
   portions Copyright © 1999-2001 Miguel Garrido (mgarrido01@hotmail.com)
