@@ -7,6 +7,6 @@ endif()
 
 add_subdirectory(Source)
 
-file(GLOB INFO_FILES "*.txt" "*.md" "LICENSE")
+file(GLOB INFO_FILES "*.txt" "*.md")
 INSTALL(FILES ${INFO_FILES}
 		COMPONENT "Info" DESTINATION ".")

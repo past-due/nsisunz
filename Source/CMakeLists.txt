@@ -48,6 +48,8 @@ set(CMAKE_CXX_STANDARD 11)
 ###########################
 # zlib
 
+set(SKIP_INSTALL_ALL ON) # do not install zlib
+
 add_subdirectory(zlib)
 
 include_directories(zlib)
