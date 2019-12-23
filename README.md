@@ -10,7 +10,7 @@
 - Further improvements by past-due, 2018+
   - Update NSIS plugin API to 3.0
   - Update bundled [zlib](https://zlib.net) to [1.2.11](https://zlib.net/ChangeLog.txt)
-  - Update bundled Minizip to 1.1-5
+  - Update bundled Minizip to 1.1-8
   - [CMake](https://cmake.org) build support (builds both ANSI and Unicode DLLs)
 
 ## Examples:
