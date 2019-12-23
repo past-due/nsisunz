@@ -37,6 +37,7 @@
 #ifdef unix
 # include <unistd.h>
 # include <utime.h>
+# include <sys/stat.h>
 #else
 # include <direct.h>
 # include <io.h>
@@ -353,6 +354,17 @@ int do_extract_currentfile(uf,popt_extract_without_path,popt_overwrite,password)
             write_filename = filename_inzip;
         else
             write_filename = filename_withoutpath;
+
+        if (write_filename[0]!='\0')
+        {
+            const char* relative_check = write_filename;
+            while (relative_check[1]!='\0')
+            {
+                if (relative_check[0]=='.' && relative_check[1]=='.')
+                    write_filename = relative_check;
+                relative_check++;
+            }
+        }
 
         while (write_filename[0]=='/' || write_filename[0]=='.')
             write_filename++;
