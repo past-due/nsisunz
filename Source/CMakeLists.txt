@@ -68,16 +68,18 @@ target_link_libraries(miniunzip zlibstatic)
 
 set(SOURCE_FILES nsisunz.cpp nsis/pluginapi.c)
 
-# ANSI / MBCS DLL
-add_library(nsisunz_ansi MODULE ${SOURCE_FILES})
-set_target_properties(nsisunz_ansi PROPERTIES RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_BINARY_DIR}")
-set_target_properties(nsisunz_ansi PROPERTIES RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_CURRENT_BINARY_DIR}")
-set_target_properties(nsisunz_ansi PROPERTIES LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_BINARY_DIR}")
-set_target_properties(nsisunz_ansi PROPERTIES LIBRARY_OUTPUT_DIRECTORY_DEBUG "${CMAKE_CURRENT_BINARY_DIR}")
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/nsisunz_ansi.dll"
+if(CMAKE_VS_PLATFORM_NAME MATCHES "^([Ww][Ii][Nn]32)|([Xx]86)|([Xx]64)$")
+	# ANSI / MBCS DLL
+	add_library(nsisunz_ansi MODULE ${SOURCE_FILES})
+	set_target_properties(nsisunz_ansi PROPERTIES RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_BINARY_DIR}")
+	set_target_properties(nsisunz_ansi PROPERTIES RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_CURRENT_BINARY_DIR}")
+	set_target_properties(nsisunz_ansi PROPERTIES LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_BINARY_DIR}")
+	set_target_properties(nsisunz_ansi PROPERTIES LIBRARY_OUTPUT_DIRECTORY_DEBUG "${CMAKE_CURRENT_BINARY_DIR}")
+	install(FILES "${CMAKE_CURRENT_BINARY_DIR}/nsisunz_ansi.dll"
 		RENAME "nsisunz.dll"
 		COMPONENT Plugins DESTINATION "Plugins/ansi")
-target_link_libraries(nsisunz_ansi zlibstatic miniunzip)
+	target_link_libraries(nsisunz_ansi zlibstatic miniunzip)
+endif()
 
 # Unicode DLL
 add_library(nsisunz_unicode MODULE ${SOURCE_FILES})
